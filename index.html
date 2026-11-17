@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUXE — Premium Clothing Brand</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ── PROGRESS BAR ── -->
+<div id="progress-bar"></div>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">LUXE</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#featured">Featured</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="icon-btn" id="searchBtn" title="Search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <button class="icon-btn cart-btn" id="cartBtn" title="Cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════ SEARCH MODAL ══════════════ -->
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-inner">
+    <input type="text" id="searchInput" placeholder="Search for blazers, dresses, coats…" autocomplete="off"/>
+    <button class="search-close" id="searchClose">✕</button>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<!-- ══════════════ CART DRAWER ══════════════ -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Your Cart <span id="cartItemCount">(0 items)</span></h3>
+    <button class="cart-close" id="cartClose">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <p>Your cart is empty</p>
+      <a href="#featured" class="btn btn-gold" onclick="closeCart()">Start Shopping</a>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <strong id="cartTotal">$0.00</strong>
+    </div>
+    <p class="cart-note">Shipping & taxes calculated at checkout</p>
+    <button class="btn btn-gold full-w" onclick="showToast('🎉 Proceeding to checkout!')">Checkout</button>
+    <button class="btn btn-outline-dark full-w" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</aside>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <img class="hero-bg-img"
+    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1800&auto=format&fit=crop&q=80"
+    alt="LUXE Hero Fashion"
+    crossorigin="anonymous"
+    onerror="this.src='https://picsum.photos/1800/900?random=1'"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="tag reveal-left">New Collection — Summer 2026</span>
+    <h1 class="reveal-up">Wear Your <br/><em>Story</em></h1>
+    <p class="reveal-up delay-1">Premium fashion crafted for those who refuse to blend in.<br/>Timeless silhouettes. Uncompromising quality.</p>
+    <div class="hero-btns reveal-up delay-2">
+      <a href="#collections" class="btn btn-gold">Shop Now</a>
+      <a href="#about" class="btn btn-outline">Our Story</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-dot"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════ MARQUEE ══════════════ -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>NEW ARRIVALS 2026</span><span class="dot">◆</span>
+    <span>FREE SHIPPING OVER $150</span><span class="dot">◆</span>
+    <span>SUSTAINABLY MADE</span><span class="dot">◆</span>
+    <span>PREMIUM QUALITY</span><span class="dot">◆</span>
+    <span>LIMITED EDITION DROPS</span><span class="dot">◆</span>
+    <span>NEW ARRIVALS 2026</span><span class="dot">◆</span>
+    <span>FREE SHIPPING OVER $150</span><span class="dot">◆</span>
+    <span>SUSTAINABLY MADE</span><span class="dot">◆</span>
+    <span>PREMIUM QUALITY</span><span class="dot">◆</span>
+    <span>LIMITED EDITION DROPS</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- ══════════════ COLLECTIONS ══════════════ -->
+<section class="section" id="collections">
+  <div class="sec-header reveal-up">
+    <span class="tag">What We Offer</span>
+    <h2>Our Collections</h2>
+    <p>Four distinct worlds, one vision — dressing life's every chapter.</p>
+  </div>
+  <div class="collections-grid">
+
+    <div class="col-card reveal-up" data-delay="0">
+      <div class="col-img-wrap">
+        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=700&auto=format&fit=crop&q=80"
+             alt="Men's Collection"
+             onerror="this.src='https://picsum.photos/700/400?random=10'"/>
+        <div class="col-label">Men's Line</div>
+      </div>
+      <div class="col-info">
+        <h3>Men's Essentials</h3>
+        <p>Tailored blazers, structured trousers, and refined casual wear engineered for the modern man.</p>
+        <a href="#featured" class="text-link">Explore →</a>
+      </div>
+    </div>
+
+    <div class="col-card reveal-up" data-delay="150">
+      <div class="col-img-wrap">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&auto=format&fit=crop&q=80"
+             alt="Women's Collection"
+             onerror="this.src='https://picsum.photos/700/400?random=11'"/>
+        <div class="col-label">Women's Line</div>
+      </div>
+      <div class="col-info">
+        <h3>Women's Couture</h3>
+        <p>From silk evening gowns to power blazers — clothing that moves with your ambition.</p>
+        <a href="#featured" class="text-link">Explore →</a>
+      </div>
+    </div>
+
+    <div class="col-card reveal-up" data-delay="300">
+      <div class="col-img-wrap">
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&auto=format&fit=crop&q=80"
+             alt="Accessories"
+             onerror="this.src='https://picsum.photos/700/400?random=12'"/>
+        <div class="col-label">Accessories</div>
+      </div>
+      <div class="col-info">
+        <h3>Accessories</h3>
+        <p>Italian leather handbags, hand-stitched belts, and statement scarves to complete the look.</p>
+        <a href="#featured" class="text-link">Explore →</a>
+      </div>
+    </div>
+
+    <div class="col-card reveal-up" data-delay="450">
+      <div class="col-img-wrap">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=700&auto=format&fit=crop&q=80"
+             alt="Limited Edition"
+             onerror="this.src='https://picsum.photos/700/400?random=13'"/>
+        <div class="col-label">Limited Edition</div>
+      </div>
+      <div class="col-info">
+        <h3>Limited Drops</h3>
+        <p>Capsule collections released quarterly. Once they're gone, they're gone — forever.</p>
+        <a href="#featured" class="text-link">Explore →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<div class="stats-bar">
+  <div class="stat reveal-up" data-delay="0">
+    <strong class="count-num" data-target="12">0</strong>
+    <span>Years of Excellence</span>
+  </div>
+  <div class="stat reveal-up" data-delay="120">
+    <strong class="count-num" data-target="348">0</strong>
+    <span>Unique Designs</span>
+  </div>
+  <div class="stat reveal-up" data-delay="240">
+    <strong class="count-num" data-target="94000">0</strong>
+    <span>Happy Customers</span>
+  </div>
+  <div class="stat reveal-up" data-delay="360">
+    <strong class="count-num" data-target="52">0</strong>
+    <span>Countries Shipped</span>
+  </div>
+  <div class="stat reveal-up" data-delay="480">
+    <strong class="count-num" data-target="4.9">0</strong>
+    <span>Average Rating ★</span>
+  </div>
+</div>
+
+<!-- ══════════════ FEATURED PRODUCTS ══════════════ -->
+<section class="section bg-cream" id="featured">
+  <div class="sec-header reveal-up">
+    <span class="tag">Handpicked For You</span>
+    <h2>Featured Pieces</h2>
+    <p>Editor's selection — the most coveted items this season.</p>
+  </div>
+  <div class="products-grid">
+
+    <!-- Product 1 -->
+    <div class="prod-card reveal-up" data-delay="0"
+         data-name="Obsidian Wool Blazer"
+         data-price="289.00"
+         data-img="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&auto=format&fit=crop&q=80">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&auto=format&fit=crop&q=80"
+             alt="Obsidian Wool Blazer"
+             onerror="this.src='https://picsum.photos/600/320?random=20'"/>
+        <span class="badge new">New</span>
+        <div class="prod-actions">
+          <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+          <button class="cart-add-btn" onclick="addToCart(this)" title="Add to Cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-info">
+        <h4>Obsidian Wool Blazer</h4>
+        <p>Men's Tailoring · Sizes XS–XXL</p>
+        <div class="prod-foot">
+          <strong>$289.00</strong>
+          <div class="stars">★★★★★ <span>(142)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="prod-card reveal-up" data-delay="150"
+         data-name="Ivory Silk Midi Dress"
+         data-price="199.00"
+         data-img="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&auto=format&fit=crop&q=80">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&auto=format&fit=crop&q=80"
+             alt="Ivory Silk Midi Dress"
+             onerror="this.src='https://picsum.photos/600/320?random=21'"/>
+        <span class="badge sale">−23%</span>
+        <div class="prod-actions">
+          <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+          <button class="cart-add-btn" onclick="addToCart(this)" title="Add to Cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-info">
+        <h4>Ivory Silk Midi Dress</h4>
+        <p>Women's Couture · Sizes XS–XL</p>
+        <div class="prod-foot">
+          <strong>$199.00</strong><s>$259.00</s>
+          <div class="stars">★★★★★ <span>(89)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="prod-card reveal-up" data-delay="300"
+         data-name="Camel Cashmere Trench"
+         data-price="399.00"
+         data-img="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&auto=format&fit=crop&q=80">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&auto=format&fit=crop&q=80"
+             alt="Camel Cashmere Trench"
+             onerror="this.src='https://picsum.photos/600/320?random=22'"/>
+        <div class="prod-actions">
+          <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+          <button class="cart-add-btn" onclick="addToCart(this)" title="Add to Cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-info">
+        <h4>Camel Cashmere Trench</h4>
+        <p>Unisex Outerwear · Sizes S–XL</p>
+        <div class="prod-foot">
+          <strong>$399.00</strong>
+          <div class="stars">★★★★★ <span>(217)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="prod-card reveal-up" data-delay="450"
+         data-name="Midnight Linen Co-ord Set"
+         data-price="175.00"
+         data-img="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&auto=format&fit=crop&q=80">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&auto=format&fit=crop&q=80"
+             alt="Midnight Linen Co-ord Set"
+             onerror="this.src='https://picsum.photos/600/320?random=23'"/>
+        <span class="badge new">New</span>
+        <div class="prod-actions">
+          <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+          <button class="cart-add-btn" onclick="addToCart(this)" title="Add to Cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-info">
+        <h4>Midnight Linen Co-ord Set</h4>
+        <p>Women's Casual · Sizes XS–L</p>
+        <div class="prod-foot">
+          <strong>$175.00</strong>
+          <div class="stars">★★★★☆ <span>(63)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="prod-card reveal-up" data-delay="0"
+         data-name="Shadow Leather Jacket"
+         data-price="349.00"
+         data-img="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop&q=80">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop&q=80"
+             alt="Shadow Leather Jacket"
+             onerror="this.src='https://picsum.photos/600/320?random=24'"/>
+        <span class="badge sale">−15%</span>
+        <div class="prod-actions">
+          <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+          <button class="cart-add-btn" onclick="addToCart(this)" title="Add to Cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-info">
+        <h4>Shadow Leather Jacket</h4>
+        <p>Men's &amp; Women's · Sizes XS–XXL</p>
+        <div class="prod-foot">
+          <strong>$349.00</strong><s>$409.00</s>
+          <div class="stars">★★★★★ <span>(305)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="prod-card reveal-up" data-delay="150"
+         data-name="Sorbet Floral Sundress"
+         data-price="145.00"
+         data-img="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&auto=format&fit=crop&q=80">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&auto=format&fit=crop&q=80"
+             alt="Sorbet Floral Sundress"
+             onerror="this.src='https://picsum.photos/600/320?random=25'"/>
+        <span class="badge new">New</span>
+        <div class="prod-actions">
+          <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+          <button class="cart-add-btn" onclick="addToCart(this)" title="Add to Cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-info">
+        <h4>Sorbet Floral Sundress</h4>
+        <p>Women's Summer · Sizes XS–XL</p>
+        <div class="prod-foot">
+          <strong>$145.00</strong>
+          <div class="stars">★★★★★ <span>(78)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="prod-card reveal-up" data-delay="300"
+         data-name="Slate Grey 2-Piece Suit"
+         data-price="520.00"
+         data-img="https://images.unsplash.com/photo-1594938298603-c8148c4b4f9c?w=600&auto=format&fit=crop&q=80">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4f9c?w=600&auto=format&fit=crop&q=80"
+             alt="Slate Grey 2-Piece Suit"
+             onerror="this.src='https://picsum.photos/600/320?random=26'"/>
+        <div class="prod-actions">
+          <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+          <button class="cart-add-btn" onclick="addToCart(this)" title="Add to Cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-info">
+        <h4>Slate Grey 2-Piece Suit</h4>
+        <p>Men's Formal · Sizes 36–52</p>
+        <div class="prod-foot">
+          <strong>$520.00</strong>
+          <div class="stars">★★★★★ <span>(191)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="prod-card reveal-up" data-delay="450"
+         data-name="Venetian Leather Tote"
+         data-price="229.00"
+         data-img="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80"
+             alt="Venetian Leather Tote"
+             onerror="this.src='https://picsum.photos/600/320?random=27'"/>
+        <span class="badge new">New</span>
+        <div class="prod-actions">
+          <button class="wish-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+          <button class="cart-add-btn" onclick="addToCart(this)" title="Add to Cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-info">
+        <h4>Venetian Leather Tote</h4>
+        <p>Accessories · One Size</p>
+        <div class="prod-foot">
+          <strong>$229.00</strong>
+          <div class="stars">★★★★★ <span>(154)</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section class="about-section" id="about">
+  <div class="about-img-side">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&auto=format&fit=crop&q=80"
+         alt="About LUXE"
+         onerror="this.src='https://picsum.photos/900/620?random=30'"/>
+  </div>
+  <div class="about-text-side reveal-left">
+    <span class="tag light">Our Philosophy</span>
+    <h2>Fashion That<br/><em>Means Something</em></h2>
+    <p>LUXE was founded in New York in 2014 by designer Isabelle Marceau with a single conviction: that true luxury is not about price — it is about intention.</p>
+    <p>Every garment we produce is ethically made in family-run ateliers across Milan, Lisbon, and Seoul. We use certified organic cotton, recycled cashmere, and deadstock silk.</p>
+    <p>We don't do fast fashion. We do forever fashion.</p>
+    <div class="about-badges">
+      <div class="badge-item">🌿 Certified B-Corp</div>
+      <div class="badge-item">♻️ 100% Recycled Packaging</div>
+      <div class="badge-item">🤝 Fair Trade Certified</div>
+      <div class="badge-item">🌍 Carbon Neutral Since 2022</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PRESS ══════════════ -->
+<div class="press-bar reveal-up">
+  <span class="press-label">As Seen In</span>
+  <div class="press-logos">
+    <span>VOGUE</span><span>ELLE</span><span>GQ</span>
+    <span>HARPER'S BAZAAR</span><span>ESQUIRE</span><span>W MAGAZINE</span>
+  </div>
+</div>
+
+<!-- ══════════════ LOOKBOOK ══════════════ -->
+<section class="section" id="lookbook">
+  <div class="sec-header reveal-up">
+    <span class="tag">Style Inspiration</span>
+    <h2>The Lookbook</h2>
+    <p>Real people. Real style. Follow us <strong>@luxefashion</strong></p>
+  </div>
+  <div class="gram-grid">
+    <div class="gram-item reveal-up" data-delay="0">
+      <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=500&auto=format&fit=crop&q=80" alt="Look 1" onerror="this.src='https://picsum.photos/500/500?random=40'"/>
+      <div class="gram-hover">♥ 4,821</div>
+    </div>
+    <div class="gram-item reveal-up" data-delay="80">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop&q=80" alt="Look 2" onerror="this.src='https://picsum.photos/500/500?random=41'"/>
+      <div class="gram-hover">♥ 3,204</div>
+    </div>
+    <div class="gram-item reveal-up" data-delay="160">
+      <img src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=500&auto=format&fit=crop&q=80" alt="Look 3" onerror="this.src='https://picsum.photos/500/500?random=42'"/>
+      <div class="gram-hover">♥ 6,118</div>
+    </div>
+    <div class="gram-item reveal-up" data-delay="240">
+      <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=500&auto=format&fit=crop&q=80" alt="Look 4" onerror="this.src='https://picsum.photos/500/500?random=43'"/>
+      <div class="gram-hover">♥ 2,977</div>
+    </div>
+    <div class="gram-item reveal-up" data-delay="320">
+      <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=500&auto=format&fit=crop&q=80" alt="Look 5" onerror="this.src='https://picsum.photos/500/500?random=44'"/>
+      <div class="gram-hover">♥ 5,443</div>
+    </div>
+    <div class="gram-item reveal-up" data-delay="400">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&auto=format&fit=crop&q=80" alt="Look 6" onerror="this.src='https://picsum.photos/500/500?random=45'"/>
+      <div class="gram-hover">♥ 7,890</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REVIEWS ══════════════ -->
+<section class="section bg-dark" id="reviews">
+  <div class="sec-header reveal-up">
+    <span class="tag">What They Say</span>
+    <h2 style="color:#fafafa">Customer Stories</h2>
+    <p style="color:rgba(255,255,255,.5)">Over 94,000 happy customers across 52 countries.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal-up" data-delay="0">
+      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&auto=format&fit=crop&q=80" alt="Sofia Chen" onerror="this.src='https://ui-avatars.com/api/?name=Sofia+Chen&background=c9a84c&color=000&size=80'"/>
+      <div class="stars-gold">★★★★★</div>
+      <p>"Every piece I've bought feels like it was made specifically for me. The ivory silk dress is hands-down the most beautiful thing I own."</p>
+      <strong>Sofia Chen</strong>
+      <span>Fashion Blogger · New York</span>
+    </div>
+    <div class="review-card reveal-up" data-delay="150">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&auto=format&fit=crop&q=80" alt="Marcus Williams" onerror="this.src='https://ui-avatars.com/api/?name=Marcus+Williams&background=c9a84c&color=000&size=80'"/>
+      <div class="stars-gold">★★★★★</div>
+      <p>"I wore the Obsidian Blazer to my TED Talk and three board meetings. I've received more compliments than on anything else I've ever worn."</p>
+      <strong>Marcus Williams</strong>
+      <span>Entrepreneur · London</span>
+    </div>
+    <div class="review-card reveal-up" data-delay="300">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&auto=format&fit=crop&q=80" alt="Amara Osei" onerror="this.src='https://ui-avatars.com/api/?name=Amara+Osei&background=c9a84c&color=000&size=80'"/>
+      <div class="stars-gold">★★★★★</div>
+      <p>"LUXE is the only brand I trust for sustainable fashion that actually looks incredible. I've converted my entire wardrobe."</p>
+      <strong>Amara Osei</strong>
+      <span>Stylist · Paris</span>
+    </div>
+    <div class="review-card reveal-up" data-delay="450">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&auto=format&fit=crop&q=80" alt="James Park" onerror="this.src='https://ui-avatars.com/api/?name=James+Park&background=c9a84c&color=000&size=80'"/>
+      <div class="stars-gold">★★★★★</div>
+      <p>"The Camel Trench is a masterpiece. I've had it for three seasons and it still looks brand new. Sizing advice from their team was spot-on."</p>
+      <strong>James Park</strong>
+      <span>Architect · Seoul</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ NEWSLETTER ══════════════ -->
+<section class="newsletter reveal-up">
+  <img class="news-bg-img" src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&auto=format&fit=crop&q=80" alt="" onerror="this.style.display='none'"/>
+  <div class="news-overlay"></div>
+  <div class="news-content">
+    <span class="tag light">Be First to Know</span>
+    <h2>Join the LUXE Circle</h2>
+    <p>Exclusive early access, private sales, and style inspiration — delivered to your inbox.</p>
+    <form class="news-form" onsubmit="handleSubscribe(event)">
+      <input type="email" placeholder="Your email address" required/>
+      <button type="submit" class="btn btn-gold">Subscribe Free</button>
+    </form>
+    <small>142,000+ subscribers · No spam · Cancel anytime</small>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section class="section bg-cream" id="contact">
+  <div class="sec-header reveal-up">
+    <span class="tag">Get In Touch</span>
+    <h2>Contact Us</h2>
+    <p>Our style advisors are available Monday – Saturday, 9am – 8pm EST.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info reveal-left">
+      <div class="contact-item"><div class="ci-icon">📍</div><div><strong>Flagship Store</strong><p>42 Fifth Avenue, New York, NY 10011</p><p>Mon–Sat: 10am–9pm · Sun: 12pm–6pm</p></div></div>
+      <div class="contact-item"><div class="ci-icon">🏬</div><div><strong>International Boutiques</strong><p>Milan · Paris · London · Dubai · Tokyo · Seoul</p></div></div>
+      <div class="contact-item"><div class="ci-icon">📞</div><div><strong>Customer Service</strong><p>+1 (212) 555-0192</p></div></div>
+      <div class="contact-item"><div class="ci-icon">✉️</div><div><strong>Email</strong><p>hello@luxefashion.com</p></div></div>
+      <div class="social-row">
+        <a href="#" class="soc-btn">Instagram</a>
+        <a href="#" class="soc-btn">Pinterest</a>
+        <a href="#" class="soc-btn">TikTok</a>
+        <a href="#" class="soc-btn">YouTube</a>
+      </div>
+    </div>
+    <form class="contact-form reveal-right" onsubmit="handleContact(event)">
+      <div class="form-row">
+        <input type="text" placeholder="First Name" required/>
+        <input type="text" placeholder="Last Name" required/>
+      </div>
+      <input type="email" placeholder="Email Address" required/>
+      <input type="tel" placeholder="Phone Number (optional)"/>
+      <select required>
+        <option value="">Select Inquiry Type</option>
+        <option>Order Tracking</option>
+        <option>Returns &amp; Exchanges</option>
+        <option>Styling Advice</option>
+        <option>Wholesale / B2B</option>
+        <option>Press &amp; Media</option>
+        <option>Other</option>
+      </select>
+      <textarea rows="5" placeholder="Tell us how we can help…" required></textarea>
+      <button type="submit" class="btn btn-gold full-w">Send Message</button>
+      <p class="form-note">We reply within 24 hours on business days.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="f-logo">LUXE</div>
+      <p>Premium fashion crafted for those who wear their story with pride. Founded 2014 · New York.</p>
+      <div class="social-row" style="margin-top:1.2rem">
+        <a href="#" class="soc-btn sm">IG</a>
+        <a href="#" class="soc-btn sm">PT</a>
+        <a href="#" class="soc-btn sm">TK</a>
+        <a href="#" class="soc-btn sm">YT</a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Men's Collection</a></li>
+          <li><a href="#">Women's Collection</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">Limited Edition</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About LUXE</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Room</a></li>
+          <li><a href="#">Store Locator</a></li>
+          <li><a href="#">Investors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Customer Care</h5>
+        <ul>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Shipping &amp; Returns</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 LUXE Fashion Inc. All rights reserved. Photos via <a href="https://unsplash.com" target="_blank">Unsplash</a>.</p>
+    <div class="f-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
